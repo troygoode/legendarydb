@@ -1,0 +1,9 @@
+{
+  "name": "Legendary",
+  "description": "Track your progress in building a legendary weapon in Guild Wars 2 (GW2).",
+  "version": "1",
+  "permissions": [
+    "experimental",
+    "identity"
+  ]
+}

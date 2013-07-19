@@ -1,0 +1,18 @@
+{
+  "name": "gw2-legendary-tracker",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "dependencies": {
+    "require-directory": "*"
+  },
+  "devDependencies": {
+    "coffee-script": "*"
+  },
+  "scripts": {
+    "start": "./node_modules/coffee-script/bin/coffee server.coffee"
+  }
+}
