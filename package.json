@@ -11,7 +11,10 @@
   },
   "devDependencies": {
     "coffee-script": "*",
-    "grunt": "*"
+    "grunt": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*"
   },
   "scripts": {
     "start": "./node_modules/coffee-script/bin/coffee server.coffee"

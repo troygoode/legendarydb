@@ -1,15 +1,47 @@
+path = require 'path'
 data = require './data'
 
 module.exports = (grunt) ->
 
-  grunt.initConfig
-    pkg: grunt.file.readJSON 'package.json'
+  grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
 
   grunt.registerTask 'default', [
+    'clean:build'
+    'copy:build'
     'compile-ingredients'
+    'concat:ingredients'
+    'clean:ingredients'
   ]
 
+  grunt.initConfig
+    pkg: grunt.file.readJSON 'package.json'
+    clean:
+      build: ['build']
+      ingredients: [
+        'build/chrome-app/data/*.js'
+        '!build/chrome-app/data/legendaries.js'
+      ]
+    concat:
+      ingredients:
+        options:
+          separator: '\n'
+          process: (data, file_path) ->
+            key = path.basename file_path, path.extname(file_path)
+            "window.LegendaryApp.legendaries.#{key} = #{data};"
+        src: 'build/chrome-app/data/*.js'
+        dest: 'build/chrome-app/data/legendaries.js'
+    copy:
+      build:
+        files: [
+          expand: true
+          src: ['chrome-app/**']
+          dest: 'build'
+        ]
+
   grunt.registerTask 'compile-ingredients', 'Compile legendary ingredient trees.', ->
-    grunt.file.mkdir 'chrome-app/data'
     for key, legendary of data.legendaries
-      grunt.file.write "chrome-app/data/#{key}.js", JSON.stringify(legendary)
+      file_path = "build/chrome-app/data/#{key}.js"
+      grunt.file.write file_path, JSON.stringify(legendary)
+      grunt.log.write("Creating #{file_path}...").ok()
