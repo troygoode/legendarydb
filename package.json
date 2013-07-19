@@ -10,7 +10,8 @@
     "require-directory": "*"
   },
   "devDependencies": {
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "grunt": "*"
   },
   "scripts": {
     "start": "./node_modules/coffee-script/bin/coffee server.coffee"
