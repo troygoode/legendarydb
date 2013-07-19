@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "express": "*",
-    "jade": "*",
     "require-directory": "*"
   },
   "devDependencies": {
@@ -17,9 +16,10 @@
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-copy": "*",
-    "grunt-contrib-jade": "*"
+    "grunt-contrib-jade": "*",
+    "grunt-contrib-stylus": "*"
   },
   "scripts": {
-    "start": "./node_modules/coffee-script/bin/coffee server.coffee"
+    "start": "grunt; ./node_modules/coffee-script/bin/coffee server.coffee"
   }
 }

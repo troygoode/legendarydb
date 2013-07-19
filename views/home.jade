@@ -1,4 +1,13 @@
 extends layout
 
+block append styles
+  link(rel='stylesheet', href='/app.css')
+
 block content
   p Hello World
+
+block append scripts
+  script(src='/lib/underscore-min.js')
+  script(src='/lib/angular.min.js')
+  script(src='/data.js')
+  script(src='/data/legendaries.js')
