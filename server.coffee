@@ -1,3 +1,2 @@
-data = require './data'
-console.log data
+console.log 'Hello World'
 process.exit 0
