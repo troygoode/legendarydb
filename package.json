@@ -16,7 +16,8 @@
     "grunt": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-copy": "*"
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-jade": "*"
   },
   "scripts": {
     "start": "./node_modules/coffee-script/bin/coffee server.coffee"

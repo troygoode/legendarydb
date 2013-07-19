@@ -6,6 +6,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-jade'
 
   grunt.registerTask 'default', [
     'clean:build'
@@ -13,6 +14,7 @@ module.exports = (grunt) ->
     'compile-ingredients'
     'concat:ingredients'
     'clean:ingredients'
+    'jade:build'
   ]
 
   grunt.initConfig
@@ -39,6 +41,10 @@ module.exports = (grunt) ->
           src: ['chrome-app/**']
           dest: 'build'
         ]
+    jade:
+      build:
+        files:
+          'build/chrome-app/home.html': ['views/home.jade']
 
   grunt.registerTask 'compile-ingredients', 'Compile legendary ingredient trees.', ->
     for key, legendary of data.legendaries
