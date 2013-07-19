@@ -40,7 +40,7 @@ module.exports = (grunt) ->
         options:
           join: true
         files:
-          '.build/chrome-app/app.js': 'assets/js/app.coffee'
+          '.build/chrome-app/app.js': 'assets/coffee-script/**/*.coffee'
     concat:
       js:
         src: [
