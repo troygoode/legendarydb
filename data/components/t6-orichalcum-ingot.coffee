@@ -1,4 +1,4 @@
 module.exports =
   name: 'Orichalcum Ingot'
   components:
-    'orichalcum-ore': 2
+    't6-orichalcum-ore': 2

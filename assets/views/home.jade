@@ -1,12 +1,17 @@
 extends layout
 block content
 
-  div(ng-app='myApp', ng-controller='TreeController')
+  div(ng-app='LegendaryApp', ng-controller='TreeController')
+
+    h1 Legendaries
+    select(ng-model='legendary', ng-options='l.name for l in legendaries')
+
     h1 {{legendary.name}}
     ul
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
     script(id='tree_item_renderer.html', type='text/ng-template')
-      span {{data.quantity}}x {{data.component.name}}
+      div {{data.quantity}}x {{data.component.name}}
+      div {{data.path}}
       ul
        li(ng-repeat='data in data.component.components', ng-include="'tree_item_renderer.html'")

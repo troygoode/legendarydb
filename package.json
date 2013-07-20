@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "express": "*",
-    "require-directory": "*"
+    "require-directory": "*",
+    "underscore": "*"
   },
   "devDependencies": {
     "coffee-script": "*",
