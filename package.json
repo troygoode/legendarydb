@@ -14,6 +14,7 @@
   "devDependencies": {
     "coffee-script": "*",
     "grunt": "*",
+    "grunt-cli": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-concat": "*",
@@ -22,6 +23,7 @@
     "grunt-contrib-stylus": "*"
   },
   "scripts": {
-    "start": "grunt; ./node_modules/coffee-script/bin/coffee server.coffee"
+    "start": "./node_modules/coffee-script/bin/coffee server.coffee",
+    "postinstall": "./node_modules/grunt-cli/bin/grunt"
   }
 }
