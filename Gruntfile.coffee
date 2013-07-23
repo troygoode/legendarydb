@@ -20,6 +20,7 @@ module.exports = (grunt) ->
     'js'
     'jade:build'
     'stylus:build'
+    'concat:css'
   ]
 
   grunt.initConfig
@@ -43,6 +44,13 @@ module.exports = (grunt) ->
         files:
           '.build/chrome-app/app.js': 'assets/coffee-script/**/*.coffee'
     concat:
+      css:
+        src: [
+          'assets/css/bootstrap.css'
+          'assets/css/bootstrap-responsive.css'
+          '.build/chrome-app/index.css'
+        ]
+        dest: '.build/chrome-app/index.css'
       js:
         src: [
           'assets/js/lib/**/*.js'
