@@ -1,3 +1,14 @@
+# store
+if window.localStorage
+  value = window.localStorage.getItem('LegendaryApp') ? ''
+  split = value.split ','
+  store = {}
+  for p in split
+    if p?.length
+      store[p] = true
+else
+  store = {}
+
 # get legendaries
 legendaries = []
 legendaries.push legendary for key, legendary of window.LegendaryApp.legendaries
@@ -19,20 +30,38 @@ walk = (node) ->
     walk child for child in node.component.components
 walk node for node in legendaries
 
+persist = ->
+  value = []
+  value.push key for key of store
+  value = value.join(',')
+  window.localStorage.setItem 'LegendaryApp', value
+
+toggle = (node, value) ->
+  node.done = value
+  if node.done
+    store[node.path] = true
+  else if store[node.path]?
+    delete store[node.path]
+  if window.localStorage
+    persist()
+
+for key of store
+  toggle path_map[key], true
+
 controller = ($scope) ->
   $scope.legendaries = legendaries
   $scope.legendary = legendaries[0]
   $scope.click_handler = ($event) ->
-    path = $event.srcElement.parentElement.dataset.path
+    path = $event.srcElement.dataset.path
     node = path_map[path]
-    node.done = !node.done
+    toggle node, !node.done
     if node.done
       # mark all children as complete
       regex = new RegExp "^#{node.path}/.+", "i"
       child_paths = paths.filter (p) ->
         regex.test p
       for p in child_paths
-        path_map[p].done = true
+        toggle path_map[p], true
     else
       # mark all parents as incomplete
       parents = node.path.split '/'
@@ -44,7 +73,7 @@ controller = ($scope) ->
         wip = parent_path + '/'
         parents2.push parent_path
       for p in parents2
-        path_map[p].done = false
+        toggle path_map[p], false
 
 controller.$inject = ['$scope']
 
