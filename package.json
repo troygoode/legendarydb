@@ -19,7 +19,8 @@
     "grunt-contrib-concat": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-jade": "*",
-    "grunt-contrib-stylus": "*"
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-uglify": "*"
   },
   "scripts": {
     "start": "./node_modules/coffee-script/bin/coffee server.coffee",

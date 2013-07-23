@@ -9,6 +9,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
 
   grunt.registerTask 'default', [
     'clean:build'
@@ -75,10 +76,15 @@ module.exports = (grunt) ->
       build:
         files:
           '.build/chrome-app/index.css': ['assets/styles/*.styl']
+    uglify:
+      js:
+        files:
+          '.build/chrome-app/index.js': ['.build/chrome-app/index.js']
 
   grunt.registerTask 'js', [
     'coffee:build'
     'concat:js'
+    'uglify:js'
     'clean:js'
   ]
 
