@@ -32,6 +32,7 @@ map_path = (parent) ->
     c2.component.components = c2.component.components.map(map_path(c2)) if c2.component.components?
     c2
 for key, l of data.legendaries
+  l.path = l.id
   if l.components?
     l.components = l.components.map map_path(path: key)
 

@@ -11,7 +11,9 @@ block content
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
     script(id='tree_item_renderer.html', type='text/ng-template')
-      div {{data.quantity}}x {{data.component.name}}
-      div {{data.path}}
+      div(ng-click='click_handler($event)', data-path='{{data.path}}')
+        div {{data.quantity}}x {{data.component.name}}
+        div {{data.path}}
+        div(ng-show='data.done') DONE
       ul
        li(ng-repeat='data in data.component.components', ng-include="'tree_item_renderer.html'")
