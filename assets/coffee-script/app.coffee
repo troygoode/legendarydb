@@ -48,11 +48,19 @@ toggle = (node, value) ->
 for key of store
   toggle path_map[key], true
 
+find_parent_with_dataset = (el, key) ->
+  if el.dataset[key]?
+    el
+  else if el.parentElement?
+    find_parent_with_dataset el.parentElement, key
+  else
+    null
+
 controller = ($scope) ->
   $scope.legendaries = legendaries
   $scope.legendary = legendaries[0]
   $scope.click_handler = ($event) ->
-    path = $event.srcElement.dataset.path
+    path = find_parent_with_dataset($event.srcElement, 'path').dataset.path
     node = path_map[path]
     toggle node, !node.done
     if node.done

@@ -1,7 +1,7 @@
 extends layout
 block content
 
-  div(ng-app='LegendaryApp', ng-controller='TreeController')
+  .container(ng-app='LegendaryApp', ng-controller='TreeController')
 
     h1 Legendaries
     select(ng-model='legendary', ng-options='l.name for l in legendaries')
@@ -11,6 +11,12 @@ block content
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
     script(id='tree_item_renderer.html', type='text/ng-template')
-      div.node(ng-click='click_handler($event)', data-path='{{data.path}}', ng-class='{done: data.done}') {{data.quantity}}x {{data.component.name}}
+      div.node(data-path='{{data.path}}', ng-class='{done: data.done}')
+        span.label-holder(ng-click='click_handler($event)')
+          span.label.label-success(ng-show='data.done'): i.icon-ok
+          span.label.label(ng-show='!data.done'): i.icon-remove
+        span.name
+          | {{data.quantity}}x 
+          a(href='#') {{data.component.name}}
       ul
        li(ng-repeat='data in data.component.components', ng-include="'tree_item_renderer.html'")
