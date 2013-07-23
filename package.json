@@ -9,12 +9,11 @@
   "dependencies": {
     "express": "*",
     "require-directory": "*",
-    "underscore": "*"
-  },
-  "devDependencies": {
+    "underscore": "*",
+
     "coffee-script": "*",
     "grunt": "*",
-    "grunt-cli": "*",
+    "grunt-cli": "*"
     "grunt-contrib-clean": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-concat": "*",
