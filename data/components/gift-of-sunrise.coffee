@@ -1,7 +1,7 @@
 module.exports =
   name: 'Gift of Sunrise'
   href: 'http://www.gw2db.com/items/63446'
-  tags: ['Account Bound', 'Mystic Forge']
+  tags: ['Mystic Forge']
   components:
     'gift-of-light': 1
     'gift-of-metal': 1

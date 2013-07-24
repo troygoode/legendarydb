@@ -62,8 +62,15 @@ find_parent_with_dataset = (el, key) ->
     null
 
 controller = ($scope) ->
+  $scope.node_class = (node) ->
+    retval =
+      done: node.done
+    retval["level_" + node.path.split('/').length] = true
+    retval
+
   $scope.number_with_commas = (x) ->
     x.toString().replace /\B(?=(\d{3})+(?!\d))/g, ','
+
   $scope.legendaries = legendaries
   if selected_legendary_id?
     $scope.legendary = legendaries.filter((l) -> l.id is selected_legendary_id)[0]

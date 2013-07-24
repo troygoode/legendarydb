@@ -1,7 +1,7 @@
 module.exports =
   name: 'Gift of Might'
   href: 'http://www.gw2db.com/items/70045'
-  tags: ['Account Bound', 'Mystic Forge']
+  tags: ['Mystic Forge']
   components:
     't6-ancient-bone': 250
     't6-armored-scale': 250

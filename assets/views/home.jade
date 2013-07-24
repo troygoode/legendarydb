@@ -11,7 +11,7 @@ block content
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
     script(id='tree_item_renderer.html', type='text/ng-template')
-      div.node(data-path='{{data.path}}', ng-class='{done: data.done}')
+      div.node(data-path='{{data.path}}', ng-class='node_class(data)')
         span.label-holder(ng-click='click_handler($event)')
           span.label.label-success(ng-show='data.done'): i.icon-ok
           span.label(ng-show='!data.done'): i.icon-remove
