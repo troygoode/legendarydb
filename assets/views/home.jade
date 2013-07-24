@@ -6,7 +6,7 @@ block content
     header
       .container
         h1 Legendary
-        select(ng-model='legendary', ng-options='l.name for l in legendaries')
+        select(ng-model='legendary', ng-options="l.name + ' (' + l.type + ')'  for l in legendaries")
 
     article
       .container

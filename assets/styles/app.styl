@@ -14,16 +14,17 @@ header
     text-transform uppercase
     text-align center
 
-article
-  padding 0 20px
+article h2
+  margin-left 8px
 
 .node
   padding .5em .5em
-  border-radius .5em
   &.level_2
-    background-color #ccc
+    background-color #bbb
   &.level_3
-    background-color #efefef
+    background-color #ddd
+    border-top-left-radius .5em
+    border-bottom-left-radius .5em
   .label-holder
     position absolute
     margin-right 7px
@@ -32,6 +33,8 @@ article
   .info
     display inline-block
     margin-left 2.2em
+    .name a
+      font-weight bold
     .quantity
       margin-right .25em
     .quantity-ea
