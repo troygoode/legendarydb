@@ -6,7 +6,7 @@ block content
     h1 Legendaries
     select(ng-model='legendary', ng-options='l.name for l in legendaries')
 
-    h2 {{legendary.name}}
+    h2: a(href='{{legendary.href}}') {{legendary.name}}
     ul
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
@@ -14,9 +14,13 @@ block content
       div.node(data-path='{{data.path}}', ng-class='{done: data.done}')
         span.label-holder(ng-click='click_handler($event)')
           span.label.label-success(ng-show='data.done'): i.icon-ok
-          span.label.label(ng-show='!data.done'): i.icon-remove
-        span.name
-          | {{data.quantity}}x 
-          a(href='#') {{data.component.name}}
+          span.label(ng-show='!data.done'): i.icon-remove
+        .info
+          .name
+            | {{data.quantity}}x 
+            a(ng-show='data.component.href', href='{{data.component.href}}', target='_blank') {{data.component.name}}
+            span(ng-show='!data.component.href') {{data.component.name}}
+          .tags(ng-show='data.component.tags && data.component.tags.length')
+            span.label(ng-repeat='tag in data.component.tags') {{tag}}
       ul
        li(ng-repeat='data in data.component.components', ng-include="'tree_item_renderer.html'")

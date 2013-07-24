@@ -1,13 +1,15 @@
 # store
 if window.localStorage
-  value = window.localStorage.getItem('LegendaryApp') ? ''
+  value = window.localStorage.getItem('LegendaryApp-Progress') ? ''
   split = value.split ','
   store = {}
   for p in split
     if p?.length
       store[p] = true
+  selected_legendary_id = window.localStorage.getItem('LegendaryApp-SelectedLegendary')
 else
   store = {}
+  selected_legendary_id = null
 
 # get legendaries
 legendaries = []
@@ -34,7 +36,7 @@ persist = ->
   value = []
   value.push key for key of store
   value = value.join(',')
-  window.localStorage.setItem 'LegendaryApp', value
+  window.localStorage.setItem 'LegendaryApp-Progress', value
 
 toggle = (node, value) ->
   node.done = value
@@ -58,7 +60,13 @@ find_parent_with_dataset = (el, key) ->
 
 controller = ($scope) ->
   $scope.legendaries = legendaries
-  $scope.legendary = legendaries[0]
+  if selected_legendary_id?
+    $scope.legendary = legendaries.filter((l) -> l.id is selected_legendary_id)[0]
+  else
+    $scope.legendary = legendaries[0]
+  $scope.$watch 'legendary', (new_value, old_value) ->
+    if window.localStorage
+      window.localStorage.setItem 'LegendaryApp-SelectedLegendary', new_value.id
   $scope.click_handler = ($event) ->
     path = find_parent_with_dataset($event.srcElement, 'path').dataset.path
     node = path_map[path]

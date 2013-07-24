@@ -1,5 +1,6 @@
 module.exports =
   name: 'Gift of Might'
+  href: 'http://www.gw2db.com/items/70045'
   components:
     't6-ancient-bone': 250
     't6-armored-scale': 250

@@ -1,5 +1,6 @@
 module.exports =
   name: 'Gift of Magic'
+  href: 'http://www.gw2db.com/items/70046'
   components:
     't6-elaborate-totem': 250
     't6-pile-of-crystalline-dust': 250

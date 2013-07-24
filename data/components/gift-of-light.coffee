@@ -1,5 +1,6 @@
 module.exports =
   name: 'Gift of Light'
+  href: 'http://www.gw2db.com/items/63156'
   components:
     'gift-of-light-recipe': 1
     'gift-of-ascalon': 1
