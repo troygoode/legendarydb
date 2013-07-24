@@ -28,72 +28,72 @@ module.exports = (grunt) ->
     clean:
       build: ['build']
       ingredients: [
-        '.build/chrome-app/data/*.js'
-        '!.build/chrome-app/data/legendaries.js'
+        'build/chrome-app/data/*.js'
+        '!build/chrome-app/data/legendaries.js'
       ]
       js: [
-        '.build/chrome-app/**/*.js'
-        '.build/chrome-app/data'
-        '.build/chrome-app/lib'
-        '!.build/chrome-app/index.js'
-        '!.build/chrome-app/ga.js'
+        'build/chrome-app/**/*.js'
+        'build/chrome-app/data'
+        'build/chrome-app/lib'
+        '!build/chrome-app/index.js'
+        '!build/chrome-app/ga.js'
       ]
     coffee:
       build:
         options:
           join: true
         files:
-          '.build/chrome-app/app.js': 'assets/coffee-script/**/*.coffee'
+          'build/chrome-app/app.js': 'assets/coffee-script/**/*.coffee'
     concat:
       css:
         src: [
           'assets/css/bootstrap.css'
           'assets/css/bootstrap-responsive.css'
-          '.build/chrome-app/index.css'
+          'build/chrome-app/index.css'
         ]
-        dest: '.build/chrome-app/index.css'
+        dest: 'build/chrome-app/index.css'
       js:
         src: [
           'assets/js/lib/**/*.js'
           'assets/js/data.js'
-          '.build/chrome-app/data/*.js'
-          '.build/chrome-app/app.js'
+          'build/chrome-app/data/*.js'
+          'build/chrome-app/app.js'
         ]
-        dest: '.build/chrome-app/index.js'
+        dest: 'build/chrome-app/index.js'
       js_libraries:
         src: ['assets/js/data.js', 'assets/js/lib/**/*.js']
-        dest: '.build/chrome-app/lib.js'
+        dest: 'build/chrome-app/lib.js'
       ga:
         src: [
           'assets/js/ga.js'
         ]
-        dest: '.build/chrome-app/ga.js'
+        dest: 'build/chrome-app/ga.js'
       ingredients:
         options:
           process: (data, file_path) ->
             key = path.basename file_path, path.extname(file_path)
             "window.LegendaryApp.legendaries.#{key} = #{data};"
-        src: '.build/chrome-app/data/*.js'
-        dest: '.build/chrome-app/data/legendaries.js'
+        src: 'build/chrome-app/data/*.js'
+        dest: 'build/chrome-app/data/legendaries.js'
     copy:
       build:
         files: [
           expand: true
           src: ['chrome-app/**']
-          dest: '.build'
+          dest: 'build'
         ]
     jade:
       build:
         files:
-          '.build/chrome-app/index.html': ['assets/views/home.jade']
+          'build/chrome-app/index.html': ['assets/views/home.jade']
     stylus:
       build:
         files:
-          '.build/chrome-app/index.css': ['assets/styles/*.styl']
+          'build/chrome-app/index.css': ['assets/styles/*.styl']
     uglify:
       js:
         files:
-          '.build/chrome-app/index.js': ['.build/chrome-app/index.js']
+          'build/chrome-app/index.js': ['build/chrome-app/index.js']
 
   grunt.registerTask 'js', [
     'coffee:build'
@@ -105,6 +105,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'compile-ingredients', 'Compile legendary ingredient trees.', ->
     for key, legendary of data.legendaries
-      file_path = ".build/chrome-app/data/#{key}.js"
+      file_path = "build/chrome-app/data/#{key}.js"
       grunt.file.write file_path, JSON.stringify(legendary)
       grunt.log.write("Creating #{file_path}...").ok()
