@@ -1,6 +1,7 @@
 module.exports =
   name: 'Gift of Mastery'
   href: 'http://www.gw2db.com/items/70047'
+  tags: ['Account Bound', 'Mystic Forge']
   components:
     'bloodstone-shard': 1
     'gift-of-battle': 1

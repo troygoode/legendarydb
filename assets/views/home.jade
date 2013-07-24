@@ -20,6 +20,7 @@ block content
             | {{data.quantity}}x 
             a(ng-show='data.component.href', href='{{data.component.href}}', target='_blank') {{data.component.name}}
             span(ng-show='!data.component.href') {{data.component.name}}
+          .note(ng-show='data.component.note && data.component.note.length') {{data.component.note}}
           .tags(ng-show='data.component.tags && data.component.tags.length')
             span.label(ng-repeat='tag in data.component.tags') {{tag}}
       ul

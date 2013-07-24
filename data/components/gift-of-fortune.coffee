@@ -1,6 +1,7 @@
 module.exports =
   name: 'Gift of Fortune'
   href: 'http://www.gw2db.com/items/63150'
+  tags: ['Account Bound', 'Mystic Forge']
   components:
     'glob-of-ectoplasm': 250
     'gift-of-magic': 1
