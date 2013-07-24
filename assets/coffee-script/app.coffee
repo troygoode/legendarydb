@@ -18,19 +18,22 @@ legendaries.push legendary for key, legendary of window.LegendaryApp.legendaries
 # visitor
 paths = []
 path_map = {}
-visit = (node) ->
+visit = (node, parent) ->
+  if parent?.quantity? and parent.quantity > 1
+    node.quantity_each = node.quantity
+    node.quantity = node.quantity * parent.quantity
   node.done = false
   paths.push node.path
   path_map[node.path] = node
 
 # walk nodes for visitors
-walk = (node) ->
-  visit node
+walk = (node, parent) ->
+  visit node, parent
   if node.components?.length
-    walk child for child in node.components
+    walk child, node for child in node.components
   else if node.component?.components?.length
-    walk child for child in node.component.components
-walk node for node in legendaries
+    walk child, node for child in node.component.components
+walk node, null for node in legendaries
 
 persist = ->
   value = []
@@ -59,6 +62,8 @@ find_parent_with_dataset = (el, key) ->
     null
 
 controller = ($scope) ->
+  $scope.number_with_commas = (x) ->
+    x.toString().replace /\B(?=(\d{3})+(?!\d))/g, ','
   $scope.legendaries = legendaries
   if selected_legendary_id?
     $scope.legendary = legendaries.filter((l) -> l.id is selected_legendary_id)[0]
