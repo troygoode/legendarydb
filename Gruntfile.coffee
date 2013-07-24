@@ -36,6 +36,7 @@ module.exports = (grunt) ->
         '.build/chrome-app/data'
         '.build/chrome-app/lib'
         '!.build/chrome-app/index.js'
+        '!.build/chrome-app/ga.js'
       ]
     coffee:
       build:
@@ -62,6 +63,11 @@ module.exports = (grunt) ->
       js_libraries:
         src: ['assets/js/data.js', 'assets/js/lib/**/*.js']
         dest: '.build/chrome-app/lib.js'
+      ga:
+        src: [
+          'assets/js/ga.js'
+        ]
+        dest: '.build/chrome-app/ga.js'
       ingredients:
         options:
           process: (data, file_path) ->
@@ -92,6 +98,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'js', [
     'coffee:build'
     'concat:js'
+    'concat:ga'
     'uglify:js'
     'clean:js'
   ]
