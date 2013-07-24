@@ -5,7 +5,7 @@ block content
 
     header
       .container
-        h1 Legendary
+        h1 <span class='legendary'>Legendary</span><span class='db'>DB</span>
         select(ng-model='legendary', ng-options="l.name + ' (' + l.type + ')'  for l in legendaries")
 
     article
@@ -30,3 +30,9 @@ block content
             span.label(ng-repeat='tag in data.component.tags') {{tag}}
       ul
        li(ng-repeat='data in data.component.components', ng-include="'tree_item_renderer.html'")
+
+    footer
+      .container
+        p.
+          LegendaryDB is not affiliated with ArenaNet, LLC.<br>
+          Please contact us at <a href="mailto:support@legendarydb.com">support@legendarydb.com</a>.
