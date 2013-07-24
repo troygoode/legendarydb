@@ -6,7 +6,7 @@ block content
     h1 Legendaries
     select(ng-model='legendary', ng-options='l.name for l in legendaries')
 
-    h1 {{legendary.name}}
+    h2 {{legendary.name}}
     ul
       li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
