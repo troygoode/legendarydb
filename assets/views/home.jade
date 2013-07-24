@@ -1,14 +1,18 @@
 extends layout
 block content
 
-  .container(ng-app='LegendaryApp', ng-controller='TreeController')
+  div(ng-app='LegendaryApp', ng-controller='TreeController')
 
-    h1 Legendaries
-    select(ng-model='legendary', ng-options='l.name for l in legendaries')
+    header
+      .container
+        h1 Legendary
+        select(ng-model='legendary', ng-options='l.name for l in legendaries')
 
-    h2: a(href='{{legendary.href}}') {{legendary.name}}
-    ul
-      li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
+    article
+      .container
+        h2: a(href='{{legendary.href}}') {{legendary.name}}
+        ul
+          li(ng-repeat='data in legendary.components', ng-include="'tree_item_renderer.html'")
 
     script(id='tree_item_renderer.html', type='text/ng-template')
       div.node(data-path='{{data.path}}', ng-class='node_class(data)')
